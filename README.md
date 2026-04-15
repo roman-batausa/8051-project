@@ -1,16 +1,16 @@
-# 🎮 8051 LED Matrix Shooting Game
+# 8051 LED Matrix Shooting Game
 
 A fully playable shooting arcade game implemented in **8051 Assembly**, running on an 8x8 LED matrix display. The player controls a dual-gun turret at the bottom of the matrix, shoots down descending waves of enemies, and chooses between two difficulty levels — all with zero dependencies beyond the hardware itself.
 
 ---
 
-## 📺 Demo
+## Demo
 
 > *8×8 LED matrix driven via Port 0 (row data) and Port 1 (column select), with Port 3 buttons for player input.*
 
 ---
 
-## 🕹️ Gameplay
+## Gameplay
 
 - Enemies spawn at the **top of the matrix** and advance downward row by row.
 - The player controls a **two-gun turret** that can slide left and right across the bottom two rows.
@@ -20,7 +20,7 @@ A fully playable shooting arcade game implemented in **8051 Assembly**, running 
 
 ---
 
-## ⚙️ Features
+## Features
 
 | Feature                        | Details                                                                        |
 |---                             |---                                                                             |
