@@ -970,3 +970,65 @@ LOSER_HEART_LOOP:
 	LJMP LOSER_HEART_LOOP
 
 END
+
+
+;; 8x8 led matrix display engine
+;; port 0 for column, p0.0 to p0.7 from right to left
+;; port 1 from row, p1.0 to p1.7 from top to bottom
+;
+;MOV 7FH, #00000001B
+;ACALL INIT_DISP
+;MOV R0, #30H
+;MOV P1, #0
+;
+;MAIN_DISP_LOOP:
+;	MOV 38H, #8 ; number of loops, 8 loops refresh the entire led matrix
+;		    ; increasing the value of 38H by multiples of 8 will result in slower frame rate
+;	ACALL RESET_LEDMATRIX
+;	; TODO: add functions
+;	JMP MAIN_DISP_LOOP
+;
+;RESET_LEDMATRIX:
+;	; TODO: input checker functions
+;	MOV P0, @R0
+;	ACALL DISP_NEXT_ROW
+;	INC R0
+;	CJNE R0, #38H, SKIP1
+;		MOV R0, #30H
+;	SKIP1:
+;	DJNZ 38H, RESET_LEDMATRIX
+;	RET
+;
+;DISP_NEXT_ROW:
+;	MOV A, 7FH
+;	MOV P1, 7FH
+;	ACALL DELAY
+;	MOV P1, #0
+;	RL A
+;	MOV 7FH, A
+;	RET
+;
+;INIT_DISP: ; initial display, 0s are ON and 1s are OFF LEDS
+;	MOV 30H, #11111000B
+;	MOV 31H, #11111111B
+;	MOV 32H, #11111111B
+;	MOV 33H, #11111111B
+;	MOV 34H, #11111111B
+;	MOV 35H, #11111111B
+;	MOV 36H, #11111111B
+;	MOV 37H, #00011111B
+;	RET
+;
+;DELAY:	MOV 7CH, #1 ; for simulation
+;WAIT1: 	DJNZ 7CH, WAIT1
+;	RET
+;
+;;DELAY:	MOV 7EH, #9 ; for 8051 mcu , change all #9 to #12
+;;WAIT3:	MOV 7DH, #9 ; (this is for 8MHz clock, for other clock speeds experiment with different delay seconds)
+;;WAIT2:	MOV 7CH, #9
+;;WAIT1:	DJNZ 7CH, WAIT1
+;;	DJNZ 7DH, WAIT2
+;;	DJNZ 7EH, WAIT3
+;;	RET
+;
+;END
